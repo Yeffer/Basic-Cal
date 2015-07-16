@@ -16,13 +16,13 @@
 									 <div class="form-group">
 						          <label class="col-sm-2 control-label">Valor 1:</label>
 						          <div class="col-sm-10">
-						              <input class="form-control" type="text"  name="n1">
+						              <input class="form-control" type="text"  name="num1">
 						          </div>
 						      </div>
 						      <div class="form-group">
 						          <label class="col-sm-2 control-label">Valor 2:</label>
 						          <div class="col-sm-10">
-						              <input class="form-control" type="text"  name="n2">
+						              <input class="form-control" type="text"  name="num2">
 						          </div>
 						      </div>
 						      <div class="form-group">                                                        
@@ -30,17 +30,17 @@
 							        <div class="col-md-6">                                                                                                                                                                                                                                                                
 							            <select name="operador" class="form-control">
 							                	<option value=''></option>
-																<option value='+'>Adición</option>
-																<option value='-'>Diferecia</option>
-																<option value='*'>Multiplicación</option>
-																<option value='/'>División</option>
-												        <option value='%'>Modulo</option>
+																<option value='+'>+ Adición</option>
+																<option value='-'>- Diferecia</option>
+																<option value='*'>* Multiplicación</option>
+																<option value='/'>/ División</option>
+												        <option value='%'>% Modulo</option>
+												        <option value='sqrt'>√ Raiz Cuadrada</option>
 												        <option value='sen'>Sen</option>
 												        <option value='cos'>Cos</option>
 												        <option value='tan'>Tan</option>
-												        <option value='n1^n2'>N1^N2</option>
-												        <option value='sqrt'>Raiz Cuadrada</option>
-												        <option value='X^2'>X^2</option>                       
+												        <option value='X^2'>X^2</option>
+												        <option value='num1^num2'>N1^N2</option>												        												                               
 							            </select>  
 							        </div>
 							    </div>
@@ -53,61 +53,61 @@
 		        </div>
         </div>
     </div>
-  	<div class="span2 well">
-      <legend>Resultado</legend>
-        <div>
-          <div> 
+  	<div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2"><br>
+      	<legend>RESULTADO</legend>    
 				<?php
-				function operadores($n1,$n2,$operador){
+				function operadores($num1,$num2,$operador){
 					
 					switch ($operador){
 						case "+": 
-								$resultado = $n1+$n2;				
+								$resultado = $num1+$num2;				
 							break;
 						case "-":
-								$resultado = $n1-$n2;
+								$resultado = $num1-$num2;
 							break;
 						case "*": 
-								$resultado = $n1*$n2;
+								$resultado = $num1*$num2;
 							break;
-						case "/": if ($n2==0){
-											echo '<mce:script type="text/javascript"><
-														 alert("No se admite division entre 0"); 
-														// --></mce:script>';
+						case "/": if ($num2==0){
+											echo '<mce:script type="text/javascript">
+														 No se admite division entre 0 
+															</mce:script>';
 										} 
 										else{
-											$resultado = $n1 / $n2;break;
+											$resultado = $num1 / $num2;break;
 										} 
 						case '%': 
-								$resultado = $n1 % $n2;
+								$resultado = $num1 % $num2;
 							break;
 						case 'sen': 
-								$resultado = sin($n1*2*3.1416/360);
+								$resultado = sin($num1*2*3.1416/360);
 							break;
 						case 'cos': 
-								$resultado = cos($n1*2*3.1416/360);
+								$resultado = cos($num1*2*3.1416/360);
 							break;
 						case 'tan': 
-								$resultado = tan($n1*2*3.1416/360);
+								$resultado = tan($num1*2*3.1416/360);
 							break;
-						case 'n1^n2': 
-								$resultado = pow($n1,$n2);
+						case 'num1^num2': 
+								$resultado = pow($num1,$num2);
 							break;
 						case 'sqrt': 
-								$resultado = pow($n1,0.5);
+								$resultado = pow($num1,0.5);
 							break;
 						case 'X^2': 
-								$resultado = pow($n1,2);
+								$resultado = pow($num1,2);
 							break;
 						default:echo"no existe operador";
 					}
 					return $resultado;
 				}
-					$n1 = $_POST["n1"];
-					$n2 = $_POST["n2"];
+					$num1 = $_POST["num1"];
+					$num2 = $_POST["num2"];
 					$operador = $_POST["operador"];
-						echo "<ol>".operadores($n1,$n2,$operador). "</ol>";
-						             
+						echo "<ol class='col-sm-8'>".operadores($num1,$num2,$operador). "</ol>";
+						              
 				?>        
     
             </div>
